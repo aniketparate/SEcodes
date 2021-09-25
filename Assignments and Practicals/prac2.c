@@ -37,7 +37,7 @@ void push(int a)
 {
     if (isFull() == 1)
     {
-        printf(" --------Stack is Full--------\n");;
+        printf(" --------Stack is Full--------\n");
     }
     else
     {
