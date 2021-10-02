@@ -37,8 +37,8 @@ int priority(char a)
 	{
         return 1;
     }
-    else(a == '*' || a == '/')
-	{
+    else if (a == '*' || a == '/')
+    {
         return 2;
     }
 }
