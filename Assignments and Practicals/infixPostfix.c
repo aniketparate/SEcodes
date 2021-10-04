@@ -19,7 +19,7 @@ char pop()
 {
 	if(s.top == -1)
     {
-        return 1;
+        return -1;
     }
 	else
     {
@@ -30,23 +30,18 @@ char pop()
 int priority(char a)
 {
 	if(a == '(')
-    {
-        return 0;
-    } 
-    else if(a == '+' || a == '-')
-	{
-        return 1;
-    }
-    else if (a == '*' || a == '/')
-    {
-        return 2;
-    }
+	return 0;
+	if(a == '+' || a == '-')
+	return 1;
+	if(a == '*' || a == '/')
+	return 2;
 }
 
 int main()
 {
 	char exp[20];
 	char *p, x;
+
 	printf("Enter the expression: ");
 	scanf("%s", exp);
 	p = exp;
@@ -59,18 +54,18 @@ int main()
         }         					  
 		else if(*p == '(' || st[s.top] ==-1)         
 		{
-            push(*p);                  					  
+            push(*p);
         }
-        else if(*p ==')')          
+        else if(p ==')')          
 		{
 			while((x = pop()) != '(')     			  
 			printf("%c", x);
 		}
 		else										  
 		{
-			while(priority(st[s.top]) >= priority(*p))            
+			while(priority(st[s.top]) >= priority(*p))     
 			{
-				printf("%c",pop()); 
+				printf("%c",pop());
 			}                             
 			push(*p); 
 		}
