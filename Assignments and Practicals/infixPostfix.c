@@ -1,29 +1,24 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-struct stack
-{
-    int size;
-    int top;
-}s;
-
 char st[20];
+int top;
 
 void push(char a)
 {
-	s.top++;
-    st[s.top] = a;
+	top++;
+    st[top] = a;
 }
 
 char pop()
 {
-	if(s.top == -1)
+	if(top == -1)
     {
         return -1;
     }
 	else
     {
-        return st[s.top--];
+        return st[top--];
     }
 }
 
@@ -52,7 +47,7 @@ int main()
         {
             printf("%c",*p); 
         }         					  
-		else if(*p == '(' || st[s.top] ==-1)         
+		else if(*p == '(' || st[top] ==-1)         
 		{
             push(*p);
         }
@@ -63,7 +58,7 @@ int main()
 		}
 		else										  
 		{
-			while(priority(st[s.top]) >= priority(*p))     
+			while(priority(st[top]) >= priority(*p))     
 			{
 				printf("%c",pop());
 			}                             
@@ -71,7 +66,7 @@ int main()
 		}
 		p++;
 	}
-	while(s.top != -1)        						      
+	while(top != -1)        						      
 	{ 
 		printf("%c",pop());
 	}
