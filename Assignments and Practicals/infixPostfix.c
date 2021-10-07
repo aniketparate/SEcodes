@@ -1,72 +1,60 @@
 #include<stdio.h>
-#include<stdlib.h>
 
-char st[20];
-int top;
+char stack[30];
+int top =-1;
 
-void push(char a)
+void push(char x)
 {
-	top++;
-    st[top] = a;
+	stack[++top] = x;
 }
 
 char pop()
 {
 	if(top == -1)
-    {
-        return -1;
-    }
+	return -1;
 	else
-    {
-        return st[top--];
-    }
+	return stack[top--];
 }
 
-int priority(char a)
+int priority(char x)
 {
-	if(a == '(')
+	if(x == '(')
 	return 0;
-	if(a == '+' || a == '-')
+	if(x == '+' || x == '-')
 	return 1;
-	if(a == '*' || a == '/')
+	if(x == '*' || x == '/')
 	return 2;
 }
 
 int main()
 {
-	char exp[20];
+	char exp[30];
 	char *p, x;
-
 	printf("Enter the expression: ");
 	scanf("%s", exp);
 	p = exp;
-	
-    while(*p != '\0')
+	while(*p != '\0')
 	{
-		if(isalnum(*p))
-        {
-            printf("%c",*p); 
-        }         					  
-		else if(*p == '(' || st[top] ==-1)         
+		if(isalnum(*p))           					  // is alpha numeric
+		printf("%c",*p);         
+		else if(*p == '(' || stack[top] ==-1)         //if stack is empty or (
+		push(*p);                  					  //value at p 
+		else if(*p ==')')          
 		{
-            push(*p);
-        }
-        else if(p ==')')          
-		{
-			while((x = pop()) != '(')     			  
+			while((x = pop()) != '(')     			  //pop until (
 			printf("%c", x);
 		}
-		else										  
+		else										  //operator
 		{
-			while(priority(st[top]) >= priority(*p))     
+			while(priority(stack[top]) >= priority(*p))            
 			{
-				printf("%c",pop());
+				printf("%c",pop()); 
 			}                             
 			push(*p); 
 		}
 		p++;
 	}
-	while(top != -1)        						      
+	while(top != -1)        						    // until stack is empty    
 	{ 
 		printf("%c",pop());
 	}

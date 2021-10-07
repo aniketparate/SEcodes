@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-char stack[20];
+char stack[30];
 int top =-1;
 
 int priority(char c)
@@ -47,12 +47,12 @@ void display()
 	{
 		printf("%c", stack[top--]);
 	}
-	
 }
 
 int main()
 {
-	char exp[20];
+	char exp[30];
+	char x;
 	int i=0;
 
 	printf(" Enter Infix expression : ");
@@ -61,15 +61,15 @@ int main()
 	
 	while (exp[i] != '\0')
 	{
-		if (exp[i] == '(')
+		if (exp[i] == '(' || stack[top] == -1)
 		{
 			push(exp[i]);
 		}
 		else if (exp[i] == ')')
 		{
-			while (stack[top] != '(')
+			while ((x = pop()) != '(')
 			{
-				printf("%c", pop());
+				printf("%c", x);
 			}
 		}
 		else if (exp[i] == '^' || exp[i] == '*' || exp[i] == '/' || exp[i] == '+' || exp[i] == '-')
