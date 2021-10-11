@@ -3,7 +3,9 @@
         "stdio.h": "c",
         "string.h": "c",
         "ostream": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "istream": "c",
+        "streambuf": "c"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
