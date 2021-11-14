@@ -22,7 +22,6 @@ int isEmpty()
     {
         return 0;
     }
-    
 }
 
 int isFull()

@@ -5,7 +5,8 @@
         "ostream": "cpp",
         "iostream": "cpp",
         "istream": "c",
-        "streambuf": "c"
+        "streambuf": "c",
+        "cstdlib": "c"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
